@@ -1,25 +1,31 @@
-import type { AmountInterface } from "../interfaces/amountInterface";
-import type { ChangeEvent } from "react";
+import { useState } from "react";
 
-interface AmountComponentInterface {
-    amountInfos: AmountInterface;
-}
+function Amount() {
+    const [amount, setAmount] = useState(0);
+    const [userInput, setUserInput] = useState("");
 
-const handleOnClick = async (event: ChangeEvent<HTMLInputElement>) => {
-    const number = event.target.value;
-    console.log(number);
-};
+    const handleOnSubmit = (event: React.ChangeEvent) => {
+        event.preventDefault();
 
-const Amount = ({ amountInfos }: AmountComponentInterface) => {
+        setAmount(Number(userInput));
+    };
+
     return (
         <>
-            <h5>Montant</h5>
-            <form>
-                <input type="number" onChange={handleOnClick} />
+            <form onSubmit={handleOnSubmit}>
+                <input
+                    type="number"
+                    placeholder="Enter amount"
+                    value={userInput}
+                    onChange={(event) => setUserInput(event.target.value)}
+                />
+
+                <button type="submit">Add Amount</button>
             </form>
-            <p>{amountInfos.amount}</p>
+
+            <p>{amount}</p>
         </>
     );
-};
+}
 
 export default Amount;

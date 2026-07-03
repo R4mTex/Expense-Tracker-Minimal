@@ -1,31 +1,10 @@
-import { useState } from "react";
+import Amount from "./components/Amount";
 
 function App() {
-    const [amount, setAmount] = useState(0);
-    const [userInput, setUserInput] = useState("");
-
-    const handleOnSubmit = (event: React.ChangeEvent) => {
-        event.preventDefault();
-
-        setAmount(Number(userInput));
-    };
-
     return (
         <>
             <h1>Expense Tracker</h1>
-
-            <form onSubmit={handleOnSubmit}>
-                <input
-                    type="number"
-                    placeholder="Enter amount"
-                    value={userInput}
-                    onChange={(event) => setUserInput(event.target.value)}
-                />
-
-                <button type="submit">Add Amount</button>
-            </form>
-
-            <p>{amount}</p>
+            <Amount />
         </>
     );
 }
