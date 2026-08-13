@@ -1,29 +1,13 @@
-import { useState } from "react";
+import type { AmountInterface } from "../interfaces/amountInterface";
 
-function Amount() {
-    const [amount, setAmount] = useState(0);
-    const [userInput, setUserInput] = useState("");
-
-    const handleOnSubmit = (event: React.ChangeEvent) => {
-        event.preventDefault();
-
-        setAmount(Number(userInput));
-    };
-
+function Amount(props: any) {
+    const { amountList } = props;
+    console.log(props);
     return (
         <>
-            <form onSubmit={handleOnSubmit}>
-                <input
-                    type="number"
-                    placeholder="Enter amount"
-                    value={userInput}
-                    onChange={(event) => setUserInput(event.target.value)}
-                />
-
-                <button type="submit">Add Amount</button>
-            </form>
-
-            <p>{amount}</p>
+            {amountList.map((amount: AmountInterface) => (
+                <p key={amount.id}>{amount.titre}</p>
+            ))}
         </>
     );
 }
