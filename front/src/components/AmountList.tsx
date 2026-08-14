@@ -12,9 +12,11 @@ for (let i = 0; i < 4; i++) {
 function AmountList() {
     return (
         <>
-            {randomAmountData.map((amount) => (
-                <Amount key={amount.id} {...amount} />
-            ))}
+            <div className="grid grid-cols-2 gap-4">
+                {randomAmountData.map((amount) => (
+                    <Amount key={amount.id} {...amount} />
+                ))}
+            </div>
         </>
     );
 }

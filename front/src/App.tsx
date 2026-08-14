@@ -1,6 +1,5 @@
 import NavBar from "./components/NavigationBar";
 import Category from "./components/Category";
-import Amount from "./components/Amount";
 import AmountList from "./components/AmountList";
 
 function App() {
