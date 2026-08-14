@@ -11,19 +11,7 @@ status: string;
 created_at: Date;
 */
 
-export const amounts: AmountInterface[] = [
-    {
-        id: 1,
-        titre: "Loyer",
-        amount: 800,
-        currency: "$",
-        description: "Appartement situé à mon cul près du lycée trou de balle",
-        category: "Logement",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgYHvu-4Ge4muY0we_AoyUPEzu-GzXvR2INalytZETEQ&s=10",
-        status: "En cours d'utilisation",
-        created_at: "13/08/2026",
-    },
-
+export const amountData: AmountInterface[] = [
     {
         id: 1,
         titre: "Loyer",

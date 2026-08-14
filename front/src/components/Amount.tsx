@@ -1,13 +1,9 @@
 import type { AmountInterface } from "../interfaces/amountInterface";
 
-function Amount(props: any) {
-    const { amountList } = props;
-    console.log(props);
+function Amount(props: AmountInterface) {
     return (
         <>
-            {amountList.map((amount: AmountInterface) => (
-                <p key={amount.id}>{amount.titre}</p>
-            ))}
+            <p>{props.id}</p>
         </>
     );
 }
