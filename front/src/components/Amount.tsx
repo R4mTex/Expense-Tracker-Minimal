@@ -3,6 +3,25 @@ import type { AmountInterface } from "../interfaces/amountInterface";
 
 function Amount(props: AmountInterface) {
     const [clickedButton, setClickedButton] = useState<number | null>(null);
+
+    const [followed, setFollowed] = useState<number[]>([]);
+    console.log("Step 1 : ", followed);
+
+    const [numberCount, setNumberCount] = useState(0);
+
+    const handleClick = (id: number) => {
+        if (followed.includes(id)) {
+            setClickedButton(0);
+            setFollowed(followed.filter((item) => item !== id));
+            console.log("Step 2 : ", followed);
+            setNumberCount((number) => number - 1);
+        } else {
+            setClickedButton(1);
+            setFollowed([...followed, id]);
+            console.log("Step 3 : ", followed);
+            setNumberCount((number) => number + 1);
+        }
+    };
     return (
         <>
             <div className="border rounded-lg p-4 text-center">
@@ -14,12 +33,14 @@ function Amount(props: AmountInterface) {
 
                 <div className="flex flex-col items-center">
                     <button
-                        id="1"
                         className={`${clickedButton === 1 ? "cursor-pointer rounded-lg p-2 border-2 bg-red-500" : "cursor-pointer rounded-lg p-2 border-2 border-red-500"}`}
-                        onClick={() => setClickedButton(1)}>
+                        onClick={() => {
+                            handleClick(props.id);
+                        }}>
                         Like
                     </button>
-                    <button id="2" className="cursor-pointer rounded-lg p-2 border-2 border-green-500">
+                    <p>{numberCount}</p>
+                    <button className="cursor-pointer rounded-lg p-2 border-2 border-green-500">
                         Add to Total Amount
                     </button>
                 </div>

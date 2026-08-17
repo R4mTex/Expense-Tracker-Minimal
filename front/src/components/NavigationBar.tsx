@@ -32,7 +32,12 @@ const menuList: MenuItem[] = [
         name: "Deverses",
         path: "/deverses",
     },
+    {
+        name: "Followed",
+        path: "/followed",
+    },
 ];
+
 function NavBar() {
     const [clickedMenu, setClickedMenu] = useState<string | null>(null);
     return (
