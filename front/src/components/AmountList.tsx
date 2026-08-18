@@ -9,12 +9,12 @@ for (let i = 0; i < 4; i++) {
     randomAmountData.push(amountData[randomIndex]);
 }
 
-function AmountList({ followed }: { followed: number[] }) {
+function AmountList({ handleClick, followed }: { handleClick: (id: number) => void; followed: number[] }) {
     return (
         <>
             <div className="grid grid-cols-2 gap-4">
                 {randomAmountData.map((amount) => (
-                    <Amount key={amount.id} {...amount} />
+                    <Amount key={amount.id} {...amount} handleClick={handleClick} followed={followed} />
                 ))}
             </div>
         </>

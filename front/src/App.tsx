@@ -33,7 +33,7 @@ function App() {
             </button>
             <Category categories={categories} />
             */}
-            <AmountList handleClick={handleClick} />
+            <AmountList handleClick={handleClick} followed={followed} />
         </>
     );
 }

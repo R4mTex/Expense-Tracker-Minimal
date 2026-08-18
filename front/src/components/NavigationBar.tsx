@@ -38,7 +38,7 @@ const menuList: MenuItem[] = [
     },
 ];
 
-function NavBar() {
+function NavBar({ followed }: { followed: number[] }) {
     const [clickedMenu, setClickedMenu] = useState<string | null>(null);
     return (
         <>
@@ -50,6 +50,7 @@ function NavBar() {
                         className={`p-2 ${clickedMenu === menu.path ? "cursor-progress" : "cursor-pointer"}`}
                         onClick={() => setClickedMenu(menu.path)}>
                         {menu.name}
+                        {menu.name === "Followed" && <span className="ml-2">{followed.length}</span>}
                     </button>
                 ))}
             </div>
