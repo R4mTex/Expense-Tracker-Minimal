@@ -1,11 +1,12 @@
 import NavBar from "./layout/NavigationBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
-import Followed from "./pages/Followed/Followed";
+import FollowedPage from "./pages/Followed/FollowedPage";
 import HomePage from "./pages/HomePage";
 
 function App() {
     const [followed, setFollowed] = useState<number[]>([]);
+    const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
     const handleClick = (id: number) => {
         if (followed.includes(id)) {
@@ -15,6 +16,19 @@ function App() {
         }
     };
 
+    useEffect(() => {
+        const storedFollowed = localStorage.getItem("followed");
+        const parsedFollowed = storedFollowed ? JSON.parse(storedFollowed) : [];
+        setFollowed(parsedFollowed);
+        setIsInitialized(true);
+    }, []);
+
+    useEffect(() => {
+        if (isInitialized === true) {
+            localStorage.setItem("followed", JSON.stringify(followed));
+        }
+    }, [followed, isInitialized]);
+
     return (
         <>
             <NavBar followed={followed} />
@@ -22,7 +36,7 @@ function App() {
                 <Route path="/" element={<HomePage followed={followed} handleClick={handleClick} />}>
                     {" "}
                 </Route>
-                <Route path="/followed" element={<Followed />}>
+                <Route path="/followed" element={<FollowedPage />}>
                     {" "}
                 </Route>
             </Routes>
