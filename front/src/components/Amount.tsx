@@ -1,11 +1,6 @@
 import type { AmountInterface } from "../interfaces/amountInterface";
 
-function Amount(
-    props: AmountInterface & {
-        handleClick: (id: number) => void;
-        followed: number[];
-    },
-) {
+function Amount(props: AmountInterface & { followed: number[]; handleClick: (id: number) => void }) {
     return (
         <>
             <div className="border rounded-lg p-4 text-center">
