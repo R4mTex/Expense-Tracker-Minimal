@@ -1,13 +1,26 @@
 import { useEffect } from "react";
 
-function FollowedPage() {
+function FollowedPage({ followed, handleClick }: { followed: number[]; handleClick: (id: number) => void }) {
     useEffect(() => {
         console.log("Bienvenue dans Expense Tracker - Followed !");
         document.title = "Expense Tracker - Followed";
     }, []);
     return (
         <>
-            <p>HI</p>
+            <ul>
+                {followed.map((id: number) => (
+                    <li key={id}>
+                        {id}
+                        <button
+                            className={`cursor-pointer rounded-lg p-2 border-2`}
+                            onClick={() => {
+                                handleClick(id);
+                            }}>
+                            Remove
+                        </button>
+                    </li>
+                ))}
+            </ul>
         </>
     );
 }

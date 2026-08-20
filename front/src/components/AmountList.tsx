@@ -4,9 +4,14 @@ import type { AmountInterface } from "../interfaces/amountInterface";
 
 const randomAmountData: AmountInterface[] = [];
 
-for (let i = 0; i < 4; i++) {
+while (randomAmountData.length < 4) {
     const randomIndex = Math.floor(Math.random() * amountData.length);
-    randomAmountData.push(amountData[randomIndex]);
+
+    const alreadyExists = randomAmountData.some((amount) => amount.id === amountData[randomIndex].id);
+
+    if (!alreadyExists) {
+        randomAmountData.push(amountData[randomIndex]);
+    }
 }
 
 function AmountList({ followed, handleClick }: { followed: number[]; handleClick: (id: number) => void }) {

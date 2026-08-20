@@ -13,6 +13,9 @@ function App() {
             setFollowed(followed.filter((item) => item !== id));
         } else {
             setFollowed([...followed, id]);
+            if (followed.length === 4) {
+                alert("5 Expenses Followed ! ");
+            }
         }
     };
 
@@ -36,7 +39,7 @@ function App() {
                 <Route path="/" element={<HomePage followed={followed} handleClick={handleClick} />}>
                     {" "}
                 </Route>
-                <Route path="/followed" element={<FollowedPage />}>
+                <Route path="/followed" element={<FollowedPage followed={followed} handleClick={handleClick} />}>
                     {" "}
                 </Route>
             </Routes>
