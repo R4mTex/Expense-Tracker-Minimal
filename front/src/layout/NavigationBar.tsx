@@ -63,9 +63,7 @@ function NavBar({ followed, totalAmount }: { followed: number[]; totalAmount: nu
                             }}>
                             {menu.name}
                             {menu.name === "Followed" && (
-                                <span className="ml-2">
-                                    {"(" + followed.length + ")" + " Total : " + totalAmount + "€"}
-                                </span>
+                                <span className="ml-2">{`(${followed.length}) Total : ${totalAmount}€`}</span>
                             )}
                         </button>
                     ))}
