@@ -40,7 +40,7 @@ const menuList: MenuItem[] = [
     },
 ];
 
-function NavBar({ followed }: { followed: number[] }) {
+function NavBar({ followed, totalAmount }: { followed: number[]; totalAmount: number }) {
     const [clickedMenu, setClickedMenu] = useState<string | null>(null);
     const navigate = useNavigate();
     return (
@@ -62,7 +62,11 @@ function NavBar({ followed }: { followed: number[] }) {
                                 navigate(menu.path);
                             }}>
                             {menu.name}
-                            {menu.name === "Followed" && <span className="ml-2">{"(" + followed.length + ")"}</span>}
+                            {menu.name === "Followed" && (
+                                <span className="ml-2">
+                                    {"(" + followed.length + ")" + " Total : " + totalAmount + "€"}
+                                </span>
+                            )}
                         </button>
                     ))}
                 </div>
