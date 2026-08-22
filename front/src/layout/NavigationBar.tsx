@@ -1,5 +1,6 @@
 import { useState } from "react";
 import organisationIcon from "../assets/icons/charm--organisation.svg";
+import Loading from "../assets/animations/Loading.svg";
 import { useNavigate } from "react-router";
 /* import { NavLink } from "react-router";
 
@@ -61,7 +62,10 @@ function NavBar({ followed, totalAmount }: { followed: number[]; totalAmount: nu
                                 setClickedMenu(menu.path);
                                 navigate(menu.path);
                             }}>
+                            {clickedMenu === menu.path && <img src={Loading} alt="Loading" className="w-5 h-5" />}
+
                             {menu.name}
+
                             {menu.name === "Followed" && (
                                 <span className="ml-2">{`(${followed.length}) Total : ${totalAmount}€`}</span>
                             )}
