@@ -252,3 +252,9 @@ export const amountData: AmountInterface[] = [
         created_at: "13/08/2026",
     },
 ];
+
+const amountFaker = {
+    datas: amountData,
+};
+
+export { amountFaker };
