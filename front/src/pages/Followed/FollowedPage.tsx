@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { getAllAmounts } from "../../api/exercices";
 
 function FollowedPage({ followed, handleClick }: { followed: number[]; handleClick: (id: number) => void }) {
     useEffect(() => {
         console.log("Bienvenue dans Expense Tracker - Followed !");
         document.title = "Expense Tracker - Followed";
-        getAllAmounts();
     }, []);
 
     return (

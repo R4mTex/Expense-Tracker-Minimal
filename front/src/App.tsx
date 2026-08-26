@@ -5,6 +5,7 @@ import FollowedPage from "./pages/Followed/FollowedPage";
 import HomePage from "./pages/HomePage";
 import { amountData } from "./data/amountData";
 import type { AmountInterface } from "./interfaces/amountInterface";
+import { getAmounts } from "./services/amountService";
 
 function App() {
     const [followed, setFollowed] = useState<number[]>([]);
@@ -77,6 +78,18 @@ function App() {
     useEffect(() => {
         localStorage.setItem("amountDataState", JSON.stringify(amountDataState));
     }, [amountDataState]);
+
+    async function loadAmounts() {
+        try {
+            const amounts = await getAmounts();
+            console.log("Here amounts : ", amounts);
+            // ...
+        } catch (error) {
+            console.log("Here error : ", error);
+            // ...
+        }
+    }
+    loadAmounts();
 
     /*
     useEffect(() => {
